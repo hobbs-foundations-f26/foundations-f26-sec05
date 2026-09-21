@@ -112,9 +112,12 @@ print("Last Letter (positive indexing): " + word[len(word)-1])
 # FAILS: Accessing an index that doesn't exist
 # print("Last Letter (positive indexing): " + word[len(word)]) # IndexError: string index out of range
 
+word = "Rutgers"
 # FAILS: Strings are IMMUTABLE. You cannot change a string in place.
 # word[0] = "r"  # TypeError: 'str' object does not support item assignment
 
+# with slicing you can do the equivalent as above:
+word = 'r' + word[1:] # 'rutgers'
 
 
 
