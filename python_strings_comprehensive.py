@@ -227,7 +227,10 @@ csv_data = "apple,banana,cherry"
 fruit_list = csv_data.split(",")
 print(f"Split by comma: {fruit_list}")
 
-
+# split() has a default of ' '
+my_string = 'hello this is a string with spaces'
+print(my_string.split(' '))
+print(my_string.split())   # this is the same as above, because ' ' is the default
 
 # # # list() casts a string into a list of individual characters
 print(f"Characters list: {list('apple')}")
