@@ -50,16 +50,16 @@ Sometime's that's what people want.
 # # Standard f-string
 # print(f"Professor {instructor} is teaching {students} students.")
 
-# # F-strings can handle inline math and specific formatting (e.g., decimal places, percentages)
+# # # F-strings can handle inline math and specific formatting (e.g., decimal places, percentages)
 # pass_rate = 0.9567
 # print(f"Expected pass rate: {pass_rate:.2}")  # Keeps 2 decimal points
 # print(f"Expected pass rate: {pass_rate:.1%}")  # Keeps 1 decimal point and formats as % (*100)
 # print(f"Double the students: {students * 2}")
 
-# # This prints the value of the variable only:
+# # # This prints the value of the variable only:
 # print(f'{students}')
 
-# # This will print the name of the variable AND the value (note the =)
+# # # This will print the name of the variable AND the value (note the =)
 # print(f'{students=}')
 
 # # ==========================================
@@ -94,21 +94,20 @@ Sometime's that's what people want.
 # ==========================================
 # 3. INDEXING & IMMUTABILITY
 # ==========================================
-# print("\n--- 3. Indexing & Immutability ---")
-# word = "Rutgers"
-# # R  u  t  g  e  r  s
-# # 0  1  2  3  4  5  6
-# #-7 -6 -5 -4 -3 -2 -1
+print("\n--- 3. Indexing & Immutability ---")
+word = "Rutgers"
+# R  u  t  g  e  r  s
+# 0  1  2  3  4  5  6
+# -7 -6 -5 -4 -3 -2 -1
 
-# print(f"First letter: {word[0]}")
-# print(f"Last letter (negative indexing): {word[-1]}")
+print(f"First letter: {word[0]}")
+print(f"Last letter (negative indexing): {word[-1]}")
 
-# # # some examples without the f string
-# # # THE len() FUNCTION
-# print('the length of a string can be found with the len function, e.g. ' + str(len(word)))
+# THE len() FUNCTION
+print('the length of a string can be found with the len function, e.g. ' + str(len(word)))
 
 # # # why the negative indexing is useful (it's annoying to work with the end otherwise)
-# print("Last Letter (positive indexing): " + word[len(word)-1])
+print("Last Letter (positive indexing): " + word[len(word)-1])
 
 # FAILS: Accessing an index that doesn't exist
 # print("Last Letter (positive indexing): " + word[len(word)]) # IndexError: string index out of range
@@ -124,27 +123,29 @@ Sometime's that's what people want.
 # NOTE: start has default 0, stop has default len(...)-1, step has default 1
 # NOTE: start is INCLUSIVE, stop is EXCLUSIVE
 # ==========================================
-# print("\n--- 4. Slicing ---")
-# alphabet = "abcdefg"
+print("\n--- 4. Slicing ---")
+alphabet = "abcdefg"
 
-# print(f"First three letters: {alphabet[0:3]}")  # include 0, and everything up to, but NOT including index 3
-# print(f"Starting from index 3 and all the way to the end: {alphabet[3:]}") # len(alphabet) is the default, you can omit it
-# print(f"Every second letter (step): {alphabet[::2]}")
+print(f"First three letters: {alphabet[0:3:1]}")  # include 0, and everything up to, but NOT including index 3
+print(f"First three letters: {alphabet[0:3]}")  # include 0, and everything up to, but NOT including index 3
+print(f"First three letters: {alphabet[:3]}")  # include 0, and everything up to, but NOT including index 3
+print(f"Starting from index 3 and all the way to the end: {alphabet[3:]}") # len(alphabet) is the default, you can omit it
+print(f"Every second letter (step): {alphabet[::2]}")
 # # NOTE: below is the same as above (which is the usual way to write it), but making things explicit
-# print(f"Every second letter (step): {alphabet[0:len(alphabet):2]}")
-# print(f"Reversed string: {alphabet[::-1]}")     # Classic interview trick
+print(f"Every second letter (step): {alphabet[0:len(alphabet):2]}")
+print(f"Reversed string: {alphabet[::-1]}")     # Classic interview trick
 
 
 # # ==========================================
 # # 5. OPERATORS & MEMBERSHIP
 # # ==========================================
-# print("\n--- 5. Operators & Membership ---")
-# str1 = "Business"
-# str2 = "Analytics"
+print("\n--- 5. Operators & Membership ---")
+str1 = "Business"
+str2 = "Analytics"
 
-# # Concatenation (+) and Repetition (*)
-# print(f"Concatenated: {str1 + ' ' + str2}")
-# print(f"Repetition: {'Echo! ' * 3}") # concatenate the string to itself 3 times
+# Concatenation (+) and Repetition (*)
+print(f"Concatenated: {str1 + ' ' + str2}")
+print(f"Repetition: {'Echo! ' * 3}") # concatenate the string to itself 3 times
 
 # # Membership operator (in / not in) - returns a boolean
 # NOTE: you can ignore this for a few weeks but I'll leave here for later review
@@ -159,23 +160,25 @@ Sometime's that's what people want.
 # # ==========================================
 # # 6. BUILT-IN METHODS: CASE & SPACING
 # # ==========================================
-# print("\n--- 6. Methods: Case & Spacing ---")
-# dirty_string = "   data analytics   "
+print("\n--- 6. Methods: Case & Spacing ---")
+dirty_string = "   data analytics   "
 
 # # Stripping whitespace
-# print(f"Original: '{dirty_string}'")
-# print(f"Strip: '{dirty_string.strip()}'")     # Removes leading/trailing spaces
-# print(f"RStrip: '{dirty_string.rstrip()}'")   # Removes trailing only
+print(f"Original: '{dirty_string}'")
+print(f"Strip: '{dirty_string.strip()}'")     # Removes leading/trailing spaces
+print(f"RStrip: '{dirty_string.rstrip()}'")   # Removes trailing only
 
 # # Case formatting (returns a NEW string)
-# clean_string = dirty_string.strip()
-# print(f"Upper: {clean_string.upper()}")
-# print(f"Title: {clean_string.title()}")
-# print(f"Capitalize: {clean_string.capitalize()}") # Only first letter of string
+clean_string = dirty_string.strip()
+print(f"Upper: {clean_string.upper()}")
+print(f"Title: {clean_string.title()}")
+print(f"Capitalize: {clean_string.capitalize()}") # Only first letter of string
 
 # NOTE: Methods don't change the original variable unless reassigned
-# clean_string.upper()
-# print(clean_string) # Still lowercase! Must do: clean_string = clean_string.upper()
+dirty_string = "   data analytics   "
+clean_string = dirty_string.strip()
+clean_string.upper()
+print(clean_string) # Still lowercase! Must do: clean_string = clean_string.upper()
 
 
 # # ==========================================
@@ -214,7 +217,7 @@ Sometime's that's what people want.
 # ==========================================
 # 9. STRINGS <--> LISTS
 # ==========================================
-print("\n--- 9. Strings to Lists & Lists to Strings ---")
+# print("\n--- 9. Strings to Lists & Lists to Strings ---")
 csv_data = "apple,banana,cherry"
 
 # .split() divides a string based on a delimiter into a list
@@ -223,10 +226,10 @@ print(f"Split by comma: {fruit_list}")
 
 
 
-# # list() casts a string into a list of individual characters
+# # # list() casts a string into a list of individual characters
 print(f"Characters list: {list('apple')}")
 
-# # .join() combines a list of strings using a string as the "glue"
+# # # .join() combines a list of strings using a string as the "glue"
 sentence_words = ["Python", "is", "great"]
 print(f"Joined with spaces: {' '.join(sentence_words)}")
 print(f"Joined with dashes: {'-----'.join(sentence_words)}")
