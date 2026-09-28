@@ -123,3 +123,57 @@ true_copy = original_list.copy()
 true_copy.append(5)
 print(f"Original list safe: {original_list}")
 print(f"True copy modified: {true_copy}")
+
+# ==========================================
+# 7. APPEND() VS EXTEND()
+# ==========================================
+print("\n--- 1. Append vs Extend (Common Pitfall) ---")
+# This is a very common beginner mistake
+list_a = [1, True, 'hi there']
+new_elements = [4, 5, 6, 7]
+
+# .append() adds the ENTIRE object as a single new element
+list_a.append(new_elements)
+print(f"After append(): {list_a}")
+# len() is the built in length function. It returns how many elements are in the collection.
+print(f"Notice the nested list: length is {len(list_a)}") 
+
+# .extend() unpacks the elements and adds them individually
+list_b = [1, True, 'hi there']
+list_b.extend(new_elements)
+print(f"After extend(): {list_b}")
+print(f"Notice it stays flat: length is {len(list_b)}")
+
+# # ==========================================
+# # 8. NESTED LISTS & 2D INDEXING
+# # ==========================================
+# print("--- 0. Nested Lists & 2D Indexing ---")
+# # Lists can contain other lists, creating matrices or grids
+gradebook = [
+    ["Ptolemy", 95, 92],  # Row 0
+    ["Emily", 88, 91],    # Row 1
+    ["Victor", 76, 85]    # Row 2
+]
+# gradebook = [["Ptolemy", 95, 92], ["Emily", 88, 91], ["Victor", 76, 85] ]
+# # Accessing a whole row
+print(f"Emily's full record: {gradebook[1]}")
+
+# Chaining brackets to access a specific element [row][column]
+print(f"Emily's first exam score: {gradebook[1][1]}")
+
+# Mutating an element inside a nested list
+gradebook[2][2] = 89  # Updating Victor's second exam score
+print(f"Victor's updated record: {gradebook[2]}")
+
+# A few tricky points if you're new to python
+# all of these are valid python
+# empty lists are okay
+print([]) 
+# keep track of which brackets mean what ([] are overloaded)
+print([45, True, 'hello'][1]) 
+print([45][0]) 
+# lists can nest deeply
+print([[[[]]]])
+print([[[['a']]]][0][0][0])
+
+
