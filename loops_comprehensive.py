@@ -1,7 +1,3 @@
-# loops_comprehensive.py
-# A complete lecture script covering Python loops, iteration tools, and loop control.
-# Uncomment the designated lines during the lecture to demonstrate errors.
-
 # ==========================================
 # 0. THE RANGE() FUNCTION
 # ==========================================
@@ -23,7 +19,7 @@ list_object = list(range(0, 1000000, 1)) # this stores in memory 1000000 numbers
 print("range(10, 0, -2):", list(range(10, 0, -2))) # 10, 8, 6, 4, 2 (stepping backward)
 print("range(2, 6):", list(range(2, 6)))    # 2, 3, 4, 5
 print("range(5):", list(range(5)))          # 0, 1, 2, 3, 4 (default start is 0)
-# ==========================================
+# # ==========================================
 # 1. BASIC FOR LOOPS (Lists)
 # ==========================================
 print("\n--- 1. Basic For Loops (Lists) ---")
@@ -44,8 +40,8 @@ for dept in departments:
 for i in range(len(departments)):
     print(f"Index {i}: {departments[i]}")
 
-# ==========================================
-# 2. ITERATING OVER STRINGS & TUPLES
+# # ==========================================
+# # 2. ITERATING OVER STRINGS & TUPLES
 # ==========================================
 print("\n--- 2. Iterating Over Strings & Tuples ---")
 course_code = "MIS330"
@@ -69,6 +65,11 @@ for name, gpa in roster:
 print("\n--- 3. Iterating Over Dictionaries ---")
 enrollment = {"Python": 45, "Databases": 120, "Security": 35}
 
+print(enrollment)
+print(enrollment.keys())
+print(enrollment.values())
+print(enrollment.items())
+
 # Default iteration is over keys
 for course in enrollment:
     print(f"Course: {course}")
@@ -78,72 +79,97 @@ for course, students in enrollment.items():
     print(f"{course} has {students} students enrolled.")
 
 
-# ==========================================
-# 4. WHILE LOOPS
-# ==========================================
-print("\n--- 4. While Loops ---")
-# 'while' loops continue executing as long as a condition remains True.
-# Great for when you don't know exactly how many times you need to loop.
+# # ==========================================
+# # 4. WHILE LOOPS
+# # ==========================================
+# print("\n--- 4. While Loops ---")
+# # 'while' loops continue executing as long as a condition remains True.
+# # Great for when you don't know exactly how many times you need to loop.
 
-inventory = 3
-while inventory > 0:
-    print(f"Selling item... {inventory} remaining.")
-print("Out of stock!")
+# inventory = 3
+# while inventory > 0:
+#     print(f"Selling item... {inventory} remaining.")
+#     inventory -= 1 # important to remove 1 or else infinite loop
+# print("Out of stock!")
 
-
-# # # ==========================================
-# # # 5. LOOP CONTROL (break, continue)
-# # # ==========================================
-# # print("\n--- 5. Loop Control (break, continue) ---")
-
-# # # break: Exits the loop completely, skipping any remaining iterations
-# # print("Demonstrating 'break':")
-# # for num in range(1, 10):
-# #     if num == 4:
-# #         print("Hit 4, breaking out of loop!")
-# #         break
-# #     print(num)
-
-# # # continue: Skips the rest of the CURRENT iteration and moves to the next one
-# # print("\nDemonstrating 'continue':")
-# # for num in range(1, 6):
-# #     if num == 3:
-# #         print("Skipping 3!")
-# #         continue
-# #     print(num)
+# # there is no way to make an infinite for loop in 
+# # python, so it's not as "powerful" as a while loop
 
 
-# # # ==========================================
-# # # 6. THE LOOP 'ELSE' CLAUSE (Python Specific)
-# # # ==========================================
-# # print("\n--- 6. The Loop 'else' Clause ---")
-# # # The 'else' block runs ONLY if the loop finishes completely without hitting a 'break'.
-# # # Think of it as the "no-break" clause. Excellent for search operations.
+# # # # ==========================================
+# # 5. LOOP CONTROL (break, continue)
+# # ==========================================
+# print("\n--- 5. Loop Control (break, continue) ---")
 
-# # target_id = 99
-# # student_ids = [10, 20, 30, 40]
+# # break: Exits the loop completely, skipping any remaining iterations
+# print("Demonstrating 'break':")
+# for num in range(1, 10):
+#     if num == 4:
+#         print("Hit 4, breaking out of loop!")
+#         break
+#     print(num)
 
-# # for sid in student_ids:
-# #     if sid == target_id:
-# #         print(f"Found student ID {target_id}!")
-# #         break
-# # else:
-# #     # This runs because the loop finished without breaking
-# #     print(f"Student ID {target_id} was not found in the roster.")
+# # continue: Skips the rest of the CURRENT iteration and moves to the next one
+# print("\nDemonstrating 'continue':")
+# for num in range(1, 6):
+#     if num == 3:
+#         print("Skipping 3!")
+#         continue
+#     print(num)
 
 
-# # # ==========================================
-# # # 7. NESTED LOOPS
-# # # ==========================================
-# # print("\n--- 7. Nested Loops ---")
-# # # Loops inside of loops. The inner loop finishes all its iterations for EVERY single outer loop iteration.
-# # terms = ["Fall", "Spring"]
-# # classes = ["Python", "Stats"]
+# # # # ==========================================
+# # 6. THE LOOP 'ELSE' CLAUSE (Python Specific)
+# # ==========================================
+# print("\n--- 6. The Loop 'else' Clause ---")
+# # The 'else' block runs ONLY if the loop finishes completely without hitting a 'break'.
+# # Think of it as the "no-break" clause. Excellent for search operations.
 
-# # for term in terms:
-# #     print(f"--- {term} Term ---")
-# #     for cls in classes:
-# #         print(f"Teaching: {cls}")
+# target_id = 99
+# student_ids = [10, 20, 30, 40]
+
+# for sid in student_ids:
+#     if sid == target_id:
+#         print(f"Found student ID {target_id}!")
+#         break
+# else:
+#     # This runs because the loop finished without breaking
+#     print(f"Student ID {target_id} was not found in the roster.")
+
+
+# # ==========================================
+# # 7. NESTED LOOPS
+# # ==========================================
+# print("\n--- 7. Nested Loops ---")
+# # Loops inside of loops. The inner loop finishes all its iterations for EVERY single outer loop iteration.
+# terms = ["Fall", "Spring"]
+# classes = ["Python", "Stats"]
+
+# for term in terms:
+#     print(f"--- {term} Term ---")
+#     for cls in classes:
+#         print(f"Teaching: {cls}")
+
+# # nested loops are an easy way to work in multiple dimensions
+# # For example, in 2d, like a table/matrix
+# for i in range(10): # think of this as the rows
+#     for j in range(5): # think of this as the columns
+#         print('*', end=' ')
+#     print()
+
+# # nested loops are also useful for finding any
+# # matching pairs (iterating through all possible pairs)
+# my_string = 'This is some string'
+
+# found = False # this is a "flag" for breaking out of outer loop
+# for i in range(len(my_string)):
+#     for j in range(i+1,len(my_string)):
+#         if my_string[i] == my_string[j]:
+#             print(f'found a match {my_string[i]} at indices {i} and {j}')
+#             found = True
+#             break # break after first match
+#     if found:
+#         break
 
 
 # # # ==========================================
