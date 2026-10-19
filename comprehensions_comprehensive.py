@@ -16,10 +16,15 @@ for price in raw_prices:
 taxed_prices = [price * 1.07 for price in raw_prices]
 print(f"Taxed prices: {taxed_prices}")
 
-for tax in taxed_prices:
-    print(f'{tax=:.2f}' for tax in taxed_prices)
+# for tax in taxed_prices:
+#     print(f'{tax=:.2f}' for tax in taxed_prices)
 
 # Filtering: Keep only items that meet a condition (e.g., even numbers)
+taxed_prices = []
+for price in raw_prices:
+    if price % 2 == 0:
+        taxed_prices.append(price * 1.0)
+
 # Syntax: [expression for item in iterable if condition]
 raw_prices = [10, 22, 35, 40, 55]
 even_prices = [price for price in raw_prices if price % 2 == 0]
@@ -92,8 +97,8 @@ print(f"Pass/Fail Labels (Ternary): {labels}")
 # bad_syntax = [g for g in grades if g >= 70 else "Fail"] # SyntaxError: expected ']'
 
 
-# ==========================================
-# 4. NESTED COMPREHENSIONS (Flattening)
+# # ==========================================
+# # 4. NESTED COMPREHENSIONS (Flattening)
 # ==========================================
 print("\n--- 4. Nested Comprehensions (Flattening) ---")
 # You can put multiple 'for' loops inside a single comprehension.
@@ -108,7 +113,15 @@ matrix = [
 # Goal: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 # Outer loop comes first, inner loop comes second!
 flat_list = [num for row in matrix for num in row]
+
 print(f"Flattened matrix: {flat_list}")
+
+# without list comprehension, the above would look like:
+flat_list = []
+for row in matrix:
+     for num in row:
+         flat_list.append(num)
+
 
 
 # ==========================================
@@ -124,7 +137,7 @@ matrix = [
 ]
 
 # This builds a new matrix where rows become columns.
-transposed = [[row[i] for row in matrix] for i in range(3)]
+transposed = [[row[col_idx] for row in matrix] for col_idx in range(3)]
 print("Transposed Matrix:")
 for row in transposed:
     print(row)
@@ -137,7 +150,7 @@ print("--- 0. The Memory Problem ---")
 # If you create a list of 10 million items, your computer might crash.
 
 import sys
-standard_list = [x ** 2 for x in range(1000000)]
+standard_list = [x ** 2 for x in range(10000000)]
 print(f"List memory size: {sys.getsizeof(standard_list)} bytes")
 
 
@@ -148,11 +161,11 @@ print("\n--- 1. Generator Expressions ---")
 # Replace brackets [] with parentheses (). 
 # This creates a generator object that yields one item at a time, saving massive amounts of RAM.
 
-gen_expr = (x ** 2 for x in range(1000000))
+gen_expr = (x ** 2 for x in range(10000000))
 print(f"Generator type: {type(gen_expr)}")
 print(f"Generator memory size: {sys.getsizeof(gen_expr)} bytes") # Radically smaller!
 
-# # You can iterate through it just like a list
+# You can iterate through it just like a list
 print("First three values from generator:")
 for _ in range(3):
     print(next(gen_expr))
@@ -163,14 +176,14 @@ print(next(gen_expr)) # always continues where it left off
 # # List comprehensions load the entire list into RAM at once. 
 # # If processing 10 million rows, use a Generator Expression instead!
 # # Generator Expression (uses parentheses instead of brackets):
-# # memory_safe = (x * 2 for x in massive_dataset)
+# # memory_safe = (x * 2 for x in masssive_dataset)
 
-# # ==========================================
-# # 7. COMMON ERRORS & PITFALLS
-# # ==========================================
+# ==========================================
+# 7. COMMON ERRORS & PITFALLS
+# ==========================================
 # print("\n--- 6. Common Errors ---")
 
-# # FAILS: Trying to put an unhashable type (like a list) into a set comprehension
-# # nested_lists = [[1, 2], [3, 4], [1, 2]]
-# # unique_lists = {lst for lst in nested_lists} # TypeError: unhashable type: 'list'
-# # FIX: Convert the inner lists to tuples first: {tuple(lst) for lst in nested_lists}
+# FAILS: Trying to put an unhashable type (like a list) into a set comprehension
+# nested_lists = [[1, 2], [3, 4], [1, 2]]
+# unique_lists = {lst for lst in nested_lists} # TypeError: unhashable type: 'list'
+# FIX: Convert the inner lists to tuples first: {tuple(lst) for lst in nested_lists}
