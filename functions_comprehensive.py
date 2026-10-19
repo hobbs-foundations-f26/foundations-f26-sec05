@@ -131,6 +131,9 @@ def add_student_bad(name, roster=[]):
 
 print("Bad Roster 1:", add_student_bad("Alice"))
 print("Bad Roster 2:", add_student_bad("Bob"))   # Wait, Alice is still here! The list persists.
+print("Bad Roster 3:", add_student_bad("Charlie", []))
+print("Bad Roster 2:", add_student_bad("Dave"))  
+
 
 # Pythonic Fix: Use None as the default
 def add_student_good(name, roster=None):
@@ -141,6 +144,8 @@ def add_student_good(name, roster=None):
 
 print("Good Roster 1:", add_student_good("Alice"))
 print("Good Roster 2:", add_student_good("Bob"))
+print("Good Roster 3:", add_student_good("Charlie", []))
+print("Good Roster 4:", add_student_good("Dave")) 
 
 
 # ==========================================
