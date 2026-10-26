@@ -7,9 +7,9 @@
 # ==========================================
 # 0. SYS.ARGV (The Quick & Dirty Way)
 # ==========================================
-# print("--- 0. Using sys.argv ---")
-# # sys.argv is just a simple list of strings passed to the script.
-# # Index 0 is ALWAYS the name of the script itself.
+print("--- 0. Using sys.argv ---")
+# sys.argv is just a simple list of strings passed to the script.
+# Index 0 is ALWAYS the name of the script itself.
 
 # import sys
 
@@ -34,73 +34,73 @@ print("\n--- 1. argparse: Positional Arguments ---")
 
 import argparse
 
-# # Step 1: Create the parser object
+# Step 1: Create the parser object
 parser = argparse.ArgumentParser(description="A script to process business data.")
 
 # Step 2: Add a positional argument (Mandatory, order matters)
 # If the user doesn't provide this, argparse automatically halts and shows an error.
 parser.add_argument("filename", help="The CSV file you want to process.")
-args = parser.parse_args()
+# args = parser.parse_args()
 
 
 # # (We will parse the arguments below in Section 4)
 
 
-# # ==========================================
-# # 2. ARGPARSE: OPTIONAL ARGUMENTS (FLAGS)
-# # ==========================================
-# print("\n--- 2. argparse: Optional Arguments ---")
-# # Optional arguments start with '--' (long form) or '-' (short form).
-# # They are not strictly required unless you specify required=True.
+# ==========================================
+# 2. ARGPARSE: OPTIONAL ARGUMENTS (FLAGS)
+# ==========================================
+print("\n--- 2. argparse: Optional Arguments ---")
+# Optional arguments start with '--' (long form) or '-' (short form).
+# They are not strictly required unless you specify required=True.
 
 # A standard optional argument requiring a value (e.g., --rows 100)
 parser.add_argument("-r", "--rows", help="Number of rows to process.")
 
-# # A boolean flag: store_true means if the flag is present, it's True. If absent, False.
-# # (e.g., running `python script.py --verbose` sets it to True)
-# parser.add_argument("-v", "--verbose", action="store_true", 
-#                     help="Enable detailed logging output.")
+# A boolean flag: store_true means if the flag is present, it's True. If absent, False.
+# (e.g., running `python script.py --verbose` sets it to True)
+parser.add_argument("-v", "--verbose", action="store_true", 
+                    help="Enable detailed logging output.")
 
 
-# # ==========================================
-# # 3. ARGPARSE: TYPE CASTING, DEFAULTS & CHOICES
-# # ==========================================
-# print("\n--- 3. argparse: Types and Defaults ---")
+# ==========================================
+# 3. ARGPARSE: TYPE CASTING, DEFAULTS & CHOICES
+# ==========================================
+print("\n--- 3. argparse: Types and Defaults ---")
 
-# # Type casting: argparse can automatically convert inputs (e.g., to integers or floats)
-# # Default: If the user doesn't provide the flag, use this value.
-# parser.add_argument("--timeout", type=int, default=30, 
-#                     help="Timeout in seconds (default: 30)")
+# Type casting: argparse can automatically convert inputs (e.g., to integers or floats)
+# Default: If the user doesn't provide the flag, use this value.
+parser.add_argument("--timeout", type=int, default=30, 
+                    help="Timeout in seconds (default: 30)")
 
-# # Choices: Restrict the user to a specific list of valid inputs
-# parser.add_argument("--mode", choices=["fast", "safe"], default="safe",
-#                     help="Execution mode (fast or safe)")
+# Choices: Restrict the user to a specific list of valid inputs
+parser.add_argument("--mode", choices=["fast", "safe"], default="safe",
+                    help="Execution mode (fast or safe)")
 
 
-# # ==========================================
-# # 4. EXECUTING THE PARSER
-# # ==========================================
-# print("\n--- 4. Executing & Using the Arguments ---")
-# # LECTURE NOTE: In a real script, this usually goes inside your main block.
-# # We parse the arguments into an object (usually called 'args').
+# ==========================================
+# 4. EXECUTING THE PARSER
+# ==========================================
+print("\n--- 4. Executing & Using the Arguments ---")
+# LECTURE NOTE: In a real script, this usually goes inside your main block.
+# We parse the arguments into an object (usually called 'args').
 
-# # WARNING FOR IDEs: If you run this file directly in an IDE without setting up 
-# # run configurations, argparse will crash here because it expects terminal arguments.
-# # For lecture purposes, you might want to mock the arguments like this:
-# # args = parser.parse_args(["data.csv", "--rows", "50", "--verbose"])
+# WARNING FOR IDEs: If you run this file directly in an IDE without setting up 
+# run configurations, argparse will crash here because it expects terminal arguments.
+# For lecture purposes, you might want to mock the arguments like this:
+# args = parser.parse_args(["data.csv", "--rows", "50", "--verbose"])
 
-# try:
-#     args = parser.parse_args()
+try:
+    args = parser.parse_args()
     
-#     # Access arguments using dot notation matching the argument names
-#     print(f"Target File: {args.filename}")
-#     print(f"Rows requested: {args.rows}")
-#     print(f"Verbose mode: {args.verbose}")
-#     print(f"Timeout (int): {args.timeout}")
-#     print(f"Mode selected: {args.mode}")
+    # Access arguments using dot notation matching the argument names
+    print(f"Target File: {args.filename}")
+    print(f"Rows requested: {args.rows}")
+    print(f"Verbose mode: {args.verbose}")
+    print(f"Timeout (int): {args.timeout}")
+    print(f"Mode selected: {args.mode}")
 
-# except SystemExit:
-#     print("\n[Argparse caught an error or a help request (--help) and exited safely.]")
+except SystemExit:
+    print("\n[Argparse caught an error or a help request (--help) and exited safely.]")
 
 # # DEMO: run: `python cli_arguments.py -h` or `--help`
 # # See how argparse automatically builds a beautiful instruction manual!
